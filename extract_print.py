@@ -257,7 +257,7 @@ def save_debug(debug_dir, bg, score, mask, trimap, alpha, fg):
 def main():
     parser = argparse.ArgumentParser(description="POD 印花提取（确定性管线）")
     parser.add_argument("input", help="输入实拍图")
-    parser.add_argument("-o", "--output", default="002_out.png", help="输出 RGBA PNG")
+    parser.add_argument("-o", "--output", default=os.path.join("output", "002_out.png"), help="输出 RGBA PNG")
     parser.add_argument("--debug-dir", default="debug", help="中间结果目录")
     parser.add_argument("--long-side", type=int, default=1024, help="输出长边像素")
     parser.add_argument("--score-sigma", type=float, default=1.0)
@@ -271,6 +271,8 @@ def main():
     parser.add_argument("--sharpen", type=float, default=0.3)
     parser.add_argument("--pad", type=int, default=8)
     args = parser.parse_args()
+
+    os.makedirs(os.path.dirname(os.path.abspath(args.output)), exist_ok=True)
 
     t0 = time.time()
     img = read_image(args.input)

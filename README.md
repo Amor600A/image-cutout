@@ -37,10 +37,10 @@ D:\develop\python3119\python.exe -m venv .venv
 
 ## 快速开始
 
-测试样本放在 `test-data/` 目录下，该目录不入库，需要自行放入 `002.jpeg` 与 `002_expected.png`。
+测试样本放在 `test-data/` 目录下，该目录不入库，需要自行放入 `002.jpeg` 与 `002_expected.png`。输出默认写入 `output/` 目录，同样不入库。
 
 ```powershell
-.\.venv\Scripts\python.exe extract_print.py test-data/002.jpeg -o 002_out.png
+.\.venv\Scripts\python.exe extract_print.py test-data/002.jpeg
 ```
 
 输出示例：
@@ -53,13 +53,13 @@ D:\develop\python3119\python.exe -m venv .venv
 [5/8] holes filled ratio 0.0394
 [6/8] alpha solved
 [7/8] alpha semi-transparent ratio 0.0095
-[8/8] saved 002_out.png 901x1024, 1.2s
+[8/8] saved output/002_out.png 901x1024, 1.2s
 ```
 
 需要与参考图 `test-data/002_expected.png` 同尺寸时，指定长边：
 
 ```powershell
-.\.venv\Scripts\python.exe extract_print.py test-data/002.jpeg -o 002_out.png --long-side 1557
+.\.venv\Scripts\python.exe extract_print.py test-data/002.jpeg --long-side 1557
 ```
 
 ## 处理流程
@@ -119,7 +119,7 @@ D:\develop\python3119\python.exe -m venv .venv
 | 参数 | 默认值 | 说明 |
 |---|---|---|
 | `input` | 必填 | 输入实拍图路径 |
-| `-o`, `--output` | `002_out.png` | 输出 RGBA PNG 路径 |
+| `-o`, `--output` | `output/002_out.png` | 输出 RGBA PNG 路径 |
 | `--debug-dir` | `debug` | 中间结果输出目录 |
 | `--long-side` | `1024` | 输出长边像素 |
 | `--score-sigma` | `1.0` | 油墨概率平滑半径，用于让半调网点连成面 |
@@ -136,7 +136,7 @@ D:\develop\python3119\python.exe -m venv .venv
 
 ## 输出文件
 
-- `002_out.png`：最终 RGBA 结果
+- `output/002_out.png`：最终 RGBA 结果
 - `debug/01_background.png`：背景模型，用于确认拟合是否被图案污染
 - `debug/02_score.png`：油墨概率图
 - `debug/03_mask.png`：粗蒙版（含孔洞填充）
@@ -177,7 +177,8 @@ D:\develop\python3119\python.exe -m venv .venv
 ├── README.md            项目说明
 ├── TODO.md              待办事项
 ├── .gitignore           忽略规则
-├── 002_out.png          输出结果（已忽略）
+├── output/              输出结果（已忽略）
+│   └── 002_out.png          最终 RGBA 结果
 ├── debug/               中间结果（已忽略）
 ├── test-data/           测试样本（已忽略）
 │   ├── 002.jpeg             输入样本
