@@ -37,8 +37,10 @@ D:\develop\python3119\python.exe -m venv .venv
 
 ## 快速开始
 
+测试样本放在 `test-data/` 目录下，该目录不入库，需要自行放入 `002.jpeg` 与 `002_expected.png`。
+
 ```powershell
-.\.venv\Scripts\python.exe extract_print.py 002.jpeg -o 002_out.png
+.\.venv\Scripts\python.exe extract_print.py test-data/002.jpeg -o 002_out.png
 ```
 
 输出示例：
@@ -54,10 +56,10 @@ D:\develop\python3119\python.exe -m venv .venv
 [8/8] saved 002_out.png 901x1024, 1.2s
 ```
 
-需要与参考图 `002_expected.png` 同尺寸时，指定长边：
+需要与参考图 `test-data/002_expected.png` 同尺寸时，指定长边：
 
 ```powershell
-.\.venv\Scripts\python.exe extract_print.py 002.jpeg -o 002_out.png --long-side 1557
+.\.venv\Scripts\python.exe extract_print.py test-data/002.jpeg -o 002_out.png --long-side 1557
 ```
 
 ## 处理流程
@@ -172,11 +174,14 @@ D:\develop\python3119\python.exe -m venv .venv
 .
 ├── extract_print.py     主流程脚本
 ├── requirements.txt     依赖清单
+├── README.md            项目说明
 ├── TODO.md              待办事项
-├── 002.jpeg             输入样本
-├── 002_expected.png     参考效果图
-├── 002_out.png          输出结果
+├── .gitignore           忽略规则
+├── 002_out.png          输出结果（已忽略）
 ├── debug/               中间结果（已忽略）
+├── test-data/           测试样本（已忽略）
+│   ├── 002.jpeg             输入样本
+│   └── 002_expected.png     参考效果图
 └── .venv/               虚拟环境（已忽略）
 ```
 

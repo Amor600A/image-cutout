@@ -7,6 +7,9 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 
+# 测试样本（含第三方版权素材，不入库）
+test-data/
+
 # 调试中间产物
 debug/
 
